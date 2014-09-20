@@ -10,6 +10,7 @@ class BackupSMSImpl implements BackupBehavior
 
     public function backup()
     {
+        echo session('uid') . '.xml';
     }
 }
 ?>

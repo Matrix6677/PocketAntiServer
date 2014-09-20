@@ -10,7 +10,7 @@ class BackupVcfImpl implements BackupBehavior
 
     public function backup()
     {
-        echo 'vcf_backup';
+        echo session('uid') . '.vcf';
     }
 }
 

@@ -6,7 +6,7 @@ use Home\Api\BackupSMSImpl;
 use Home\Api\BackupVcfImpl;
 
 /**
- * 操作员
+ * 操作员类
  */
 class OperatorController extends CommonController
 {
