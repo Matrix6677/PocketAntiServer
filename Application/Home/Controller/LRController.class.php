@@ -54,9 +54,10 @@ class LRController extends Controller
                 ))->save($data); // 更新用户表
                 session('uid', $user['uid']);
                 session('user_name', $user['user_name']);
-//                 session('last_time', $user['last_time']);
-//                 session('last_ip', $user['last_ip']);
                 $this->response['status'] = 3; // 登陆成功
+                $this->response['session_id'] = session_id();
+                $this->response['uid'] = $user['uid'];
+                $this->response['user_name'] = $user['user_name'];
             }
         }
         echo encode_json($this->response);

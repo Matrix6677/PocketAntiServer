@@ -1,9 +1,8 @@
 <?php
 namespace Home\Controller;
 use Home\Controller\CommonController;
-use Home\Api\BackupBehavior;
-use Home\Api\BackupSMSImpl;
-use Home\Api\BackupVcfImpl;
+use Home\Api\BuildBehavior;
+use Home\Api\BuildImpl;
 
 /**
  * 操作员类
@@ -18,24 +17,24 @@ class OperatorController extends CommonController
         {
             return;
         }
-        $tag = I('tag');
+        $tag = I('post.tag', '', 'htmlspecialchars');
         switch ($tag) {
-            case 'backup_sms': // 备份短信
-                $this->setBackupBehavior(new BackupSMSImpl());
-                $this->bb->backup();
+            case 'build_token': // 生成上传所需的uptoken
+                $this->setBuildBehavior(new BuildImpl());
+                $bucket = I('post.bucket', '', 'htmlspecialchars');
+                $key = I('post.key', '', 'htmlspecialchars');
+                $this->bb->buildUptoken($bucket, $key);
                 break;
-            case 'backup_vcf': // 备份通讯录
-                $this->setBackupBehavior(new BackupVcfImpl());
-                $this->bb->backup();
+            case 'build_priurl': // 生成文件下载地址
+                $key = I('post.key', '', 'htmlspecialchars');
+                $domain = I('post.domain', '', 'htmlspecialchars');
+                $this->setBuildBehavior(new BuildImpl());
+                $this->bb->buildPriUrl($key, $domain);
                 break;
         }
     }
 
-    /**
-     * 设置备份行为
-     * @param BackupBehavior $bb
-     */
-    public function setBackupBehavior(BackupBehavior $bb)
+    public function setBuildBehavior(BuildBehavior $bb)
     {
         $this->bb = $bb;
     }
