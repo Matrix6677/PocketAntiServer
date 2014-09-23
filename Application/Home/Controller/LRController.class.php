@@ -2,6 +2,9 @@
 namespace Home\Controller;
 use Think\Controller;
 
+/**
+ * 登录注册类
+ */
 class LRController extends Controller
 {
     protected $response = array(

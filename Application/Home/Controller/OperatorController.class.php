@@ -5,7 +5,7 @@ use Home\Api\BuildBehavior;
 use Home\Api\BuildImpl;
 
 /**
- * 操作员类
+ * 用户操作类
  */
 class OperatorController extends CommonController
 {

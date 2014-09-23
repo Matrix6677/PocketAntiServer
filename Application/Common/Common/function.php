@@ -12,7 +12,7 @@ function p($array)
 /**
  * 将数组转为JSON数据格式，支持中文
  * @param array $arr 要处理的数组
- * @return string JSON格式的数据 
+ * @return string
  */
 function encode_json($arr)
 {
@@ -21,11 +21,14 @@ function encode_json($arr)
 
 function url_encode($str)
 {
-    if (is_array($str)) {
-        foreach ($str as $key => $value) {
+    if (is_array($str))
+    {
+        foreach ($str as $key => $value)
+        {
             $str[urlencode($key)] = url_encode($value);
         }
-    } else {
+    } else
+    {
         $str = urlencode($str);
     }
     return $str;
